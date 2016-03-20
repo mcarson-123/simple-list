@@ -4,8 +4,8 @@ class ListItemStore {
     
     var allListItems = [ListItem]()
     
-    func createListItem() -> ListItem {
-        let newItem = ListItem(itemDescription: "Pet your cat")
+    func createListItem(text: String) -> ListItem {
+        let newItem = ListItem(itemDescription: text)
         
         allListItems.append(newItem)
         

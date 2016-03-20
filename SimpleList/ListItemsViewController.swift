@@ -1,12 +1,17 @@
 import UIKit
 
 class ListItemsViewController: UITableViewController {
-//    @IBOutlet var inputListItem: UITextField!
     
     var listItemsStore: ListItemStore!
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print("INPUT \(textField.text)")
+        if let text = textField.text {
+            listItemsStore.createListItem(text)
+            
+            textField.text = ""
+            tableView.reloadData()
+        }
+        
         textField.resignFirstResponder()
         return true
     }
@@ -15,14 +20,27 @@ class ListItemsViewController: UITableViewController {
     // 1 section for input
     // 1 section for the created list items
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        // TODO: for list section, change to number of list items
+        let numRows = listItemsStore.allListItems.count + 1 // +1 for the input text element
+        return numRows
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("TextInputCell") as! TextInputTableViewCell
+//        let cell = tableView.dequeueReusableCellWithIdentifier("textInputCell") as! TextInputTableViewCell
+//        
+//        return cell
         
-        return cell
+        if indexPath.row == 0 {
+            return tableView.dequeueReusableCellWithIdentifier("textInputCell") as! TextInputTableViewCell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("listItemCell") as! ListItemTableViewCell
+//            cell.textLabel?.text = "todo"
+            
+            let listItem = listItemsStore.allListItems[indexPath.row - 1] // -1 for first input text element
+            cell.textLabel?.text = listItem.itemDescription
+            return cell
+        }
     }
     
     override func viewDidLoad() {

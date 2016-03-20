@@ -16,6 +16,7 @@
 		C19AAC5A1C9CEFB6002B714F /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19AAC591C9CEFB6002B714F /* ListItem.swift */; };
 		C19AAC5C1C9CF083002B714F /* ListItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19AAC5B1C9CF083002B714F /* ListItemStore.swift */; };
 		C19AAC5E1C9E5750002B714F /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19AAC5D1C9E5750002B714F /* TextInputTableViewCell.swift */; };
+		C19AAC601C9F01A1002B714F /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19AAC5F1C9F01A1002B714F /* ListItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C19AAC591C9CEFB6002B714F /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		C19AAC5B1C9CF083002B714F /* ListItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemStore.swift; sourceTree = "<group>"; };
 		C19AAC5D1C9E5750002B714F /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		C19AAC5F1C9F01A1002B714F /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				C19AAC471C9CE683002B714F /* ViewController.swift */,
 				C19AAC491C9CE683002B714F /* Main.storyboard */,
 				C19AAC5D1C9E5750002B714F /* TextInputTableViewCell.swift */,
+				C19AAC5F1C9F01A1002B714F /* ListItemTableViewCell.swift */,
 				C19AAC591C9CEFB6002B714F /* ListItem.swift */,
 				C19AAC5B1C9CF083002B714F /* ListItemStore.swift */,
 				C19AAC4C1C9CE683002B714F /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 			files = (
 				C19AAC5A1C9CEFB6002B714F /* ListItem.swift in Sources */,
 				C19AAC5E1C9E5750002B714F /* TextInputTableViewCell.swift in Sources */,
+				C19AAC601C9F01A1002B714F /* ListItemTableViewCell.swift in Sources */,
 				C19AAC481C9CE683002B714F /* ViewController.swift in Sources */,
 				C19AAC581C9CEF06002B714F /* ListItemsViewController.swift in Sources */,
 				C19AAC5C1C9CF083002B714F /* ListItemStore.swift in Sources */,

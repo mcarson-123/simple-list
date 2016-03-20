@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextInputCell" id="7fJ-sO-qUl" customClass="TextInputTableViewCell" customModule="SimpleList" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="textInputCell" id="7fJ-sO-qUl" customClass="TextInputTableViewCell" customModule="SimpleList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7fJ-sO-qUl" id="JXu-Zd-nA2">
@@ -40,6 +40,31 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="inputListItem" destination="e3H-AY-nbD" id="lN5-s8-UOA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listItemCell" id="hLx-gf-zR2" customClass="ListItemTableViewCell" customModule="SimpleList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hLx-gf-zR2" id="Oav-Xj-xG2">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ty2-YV-M5X">
+                                            <rect key="frame" x="8" y="8" width="584" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ty2-YV-M5X" secondAttribute="bottom" id="8rQ-Jh-Nx6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ty2-YV-M5X" secondAttribute="trailing" id="IDM-0S-Yih"/>
+                                        <constraint firstItem="ty2-YV-M5X" firstAttribute="top" secondItem="Oav-Xj-xG2" secondAttribute="topMargin" id="VGv-h6-COF"/>
+                                        <constraint firstItem="ty2-YV-M5X" firstAttribute="leading" secondItem="Oav-Xj-xG2" secondAttribute="leadingMargin" id="cco-Nd-gKQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="listItem" destination="ty2-YV-M5X" id="ilr-xa-UBJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
