@@ -1,6 +1,6 @@
 import UIKit
 
-class ListItem: NSObject {
+class ListItem: NSObject, NSCoding {
     var itemDescription: String
     let dateCreated: NSDate
     
@@ -9,5 +9,17 @@ class ListItem: NSObject {
         self.dateCreated = NSDate()
         
         super.init()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        self.itemDescription = aDecoder.decodeObjectForKey("itemDescription") as! String
+        self.dateCreated = aDecoder.decodeObjectForKey("dateCreated") as! NSDate
+        
+        super.init()
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(itemDescription, forKey: "itemDescription")
+        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
     }
 }

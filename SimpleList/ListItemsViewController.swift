@@ -16,7 +16,7 @@ class ListItemsViewController: UITableViewController {
         return true
     }
     
-    // TODO: create multiple sections
+    // TODO: create multiple sections ?
     // 1 section for input
     // 1 section for the created list items
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
