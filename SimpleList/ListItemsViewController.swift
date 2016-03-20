@@ -27,19 +27,30 @@ class ListItemsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCellWithIdentifier("textInputCell") as! TextInputTableViewCell
-//        
-//        return cell
-        
         if indexPath.row == 0 {
             return tableView.dequeueReusableCellWithIdentifier("textInputCell") as! TextInputTableViewCell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("listItemCell") as! ListItemTableViewCell
-//            cell.textLabel?.text = "todo"
             
             let listItem = listItemsStore.allListItems[indexPath.row - 1] // -1 for first input text element
             cell.textLabel?.text = listItem.itemDescription
             return cell
+        }
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let listItem = listItemsStore.allListItems[indexPath.row - 1] // -1 for input text field
+            listItemsStore.deleteListItem(listItem)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
     

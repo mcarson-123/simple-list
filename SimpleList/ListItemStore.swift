@@ -11,4 +11,10 @@ class ListItemStore {
         
         return newItem
     }
+    
+    func deleteListItem(item: ListItem) {
+        if let index = allListItems.indexOf(item) {
+            allListItems.removeAtIndex(index)
+        }
+    }
 }
