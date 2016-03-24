@@ -34,6 +34,18 @@ class ListItemsViewController: UITableViewController {
             
             let listItem = listItemsStore.allListItems[indexPath.row - 1] // -1 for first input text element
             cell.textLabel?.text = listItem.itemDescription
+            
+            if listItem.completed == true {
+                cell.accessoryType = .None
+                cell.textLabel?.textColor = UIColor.blackColor()
+                listItem.completed = false
+            } else {
+                cell.accessoryType = .Checkmark
+                listItem.completed = true
+                cell.textLabel?.textColor = UIColor.lightGrayColor()
+                cell.tintColor = UIColor.lightGrayColor()
+            }
+            
             return cell
         }
     }
@@ -44,6 +56,29 @@ class ListItemsViewController: UITableViewController {
         } else {
             return true
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            return // Don't edit the input text field
+        }
+
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ListItemTableViewCell
+        let listItem = listItemsStore.allListItems[indexPath.row - 1]
+        
+        // Toggle check mark and completed attribute
+        if listItem.completed == true {
+            cell.accessoryType = .None
+            cell.textLabel?.textColor = UIColor.blackColor()
+            listItem.completed = false
+        } else {
+            cell.accessoryType = .Checkmark
+            listItem.completed = true
+            cell.textLabel?.textColor = UIColor.lightGrayColor()
+            cell.tintColor = UIColor.lightGrayColor()
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

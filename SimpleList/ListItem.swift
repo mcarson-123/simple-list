@@ -3,6 +3,7 @@ import UIKit
 class ListItem: NSObject, NSCoding {
     var itemDescription: String
     let dateCreated: NSDate
+    var completed: Bool = false
     
     init(itemDescription: String) {
         self.itemDescription = itemDescription
