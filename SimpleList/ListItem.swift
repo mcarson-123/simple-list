@@ -15,6 +15,7 @@ class ListItem: NSObject, NSCoding {
     required init(coder aDecoder: NSCoder) {
         self.itemDescription = aDecoder.decodeObjectForKey("itemDescription") as! String
         self.dateCreated = aDecoder.decodeObjectForKey("dateCreated") as! NSDate
+        self.completed = aDecoder.decodeBoolForKey("completed")
         
         super.init()
     }
@@ -22,5 +23,6 @@ class ListItem: NSObject, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(itemDescription, forKey: "itemDescription")
         aCoder.encodeObject(dateCreated, forKey: "dateCreated")
+        aCoder.encodeBool(completed, forKey: "completed")
     }
 }

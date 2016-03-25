@@ -16,11 +16,7 @@ class ListItemsViewController: UITableViewController {
         return true
     }
     
-    // TODO: create multiple sections ?
-    // 1 section for input
-    // 1 section for the created list items
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: for list section, change to number of list items
         let numRows = listItemsStore.allListItems.count + 1 // +1 for the input text element
         return numRows
     }
@@ -33,19 +29,23 @@ class ListItemsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("listItemCell") as! ListItemTableViewCell
             
             let listItem = listItemsStore.allListItems[indexPath.row - 1] // -1 for first input text element
-            cell.textLabel?.text = listItem.itemDescription
+            
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: listItem.itemDescription)
             
             if listItem.completed == true {
-                cell.accessoryType = .None
-                cell.textLabel?.textColor = UIColor.blackColor()
-                listItem.completed = false
-            } else {
-                cell.accessoryType = .Checkmark
-                listItem.completed = true
                 cell.textLabel?.textColor = UIColor.lightGrayColor()
                 cell.tintColor = UIColor.lightGrayColor()
+                
+                attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+                
+            } else { // Item not completed
+                cell.textLabel?.textColor = UIColor.blackColor()
+                
+                attributeString.removeAttribute(NSStrikethroughStyleAttributeName, range: NSMakeRange(0, attributeString.length))
+                
             }
             
+            cell.textLabel?.attributedText = attributeString
             return cell
         }
     }
@@ -65,19 +65,24 @@ class ListItemsViewController: UITableViewController {
 
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ListItemTableViewCell
         let listItem = listItemsStore.allListItems[indexPath.row - 1]
+        let attributedText = cell.textLabel?.attributedText as! NSMutableAttributedString
         
-        // Toggle check mark and completed attribute
+        // Toggle strikethrough and completed attribute
         if listItem.completed == true {
-            cell.accessoryType = .None
-            cell.textLabel?.textColor = UIColor.blackColor()
             listItem.completed = false
+            cell.textLabel?.textColor = UIColor.blackColor()
+            
+            attributedText.removeAttribute(NSStrikethroughStyleAttributeName, range: NSMakeRange(0, attributedText.length))
         } else {
-            cell.accessoryType = .Checkmark
             listItem.completed = true
             cell.textLabel?.textColor = UIColor.lightGrayColor()
             cell.tintColor = UIColor.lightGrayColor()
+            
+            attributedText.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributedText.length))
+            
         }
         
+        cell.textLabel?.attributedText = attributedText
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
